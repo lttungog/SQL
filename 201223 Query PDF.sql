@@ -91,7 +91,8 @@ GROUP BY MaNV;
 SELECT PhongBan.TenPB, NhanVien.TenNV
 FROM PhongBan
 LEFT JOIN NhanVien
-ON PhongBan.MaPB = NhanVien.MaPB;
+ON PhongBan.MaPB = NhanVien.MaPB
+WHERE PhongBan.MaPB = 103;
 
 --------------------------------------- 7.
 
