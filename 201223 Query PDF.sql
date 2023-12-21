@@ -126,3 +126,34 @@ GROUP BY NhanVien.MaPB
 ORDER BY NhanVien.MaPB DESC;
 
 ---------------------------------------- 11.
+
+SELECT COUNT(MaNV) AS SoLuongNV, PhongBan.MaPB, PhongBan.TenPB
+FROM NhanVien
+INNER JOIN PhongBan
+ON NhanVien.MaPB = PhongBan.MaPB
+WHERE NhanVien.MaPB = 103
+GROUP BY PhongBan.MaPB, PhongBan.TenPB;
+
+--------------------------------------- 12.
+
+DELETE FROM LuongDA 
+WHERE MaDA = 1111;
+
+--------------------------------------- 13.
+
+DELETE FROM LuongDA 
+WHERE SoTien = 50000;
+
+--------------------------------------- 14.
+
+UPDATE LuongDA
+SET SoTien = SoTien * 1.1
+WHERE MaDA = 1231;
+
+--------------------------------------- 15.
+
+DELETE FROM NhanVien
+WHERE MaNV NOT IN (
+	SELECT MaNV
+	FROM LuongDA
+);
