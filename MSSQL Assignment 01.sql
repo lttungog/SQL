@@ -81,4 +81,51 @@ INSERT INTO OrderDetails VALUES (57, 4, 3000, 1);
 
 -------------------------------- 4a.
 
-SELECT Customer.CustomerID, Customer.NAME 
+SELECT * FROM Customer
+WHERE CustomerID IN (SELECT CustomerID FROM Orders);
+
+-------------------------------- 4b.
+
+SELECT ProductID, NAME
+FROM Product;
+
+-------------------------------- 4c.
+
+SELECT * FROM Orders;
+
+-------------------------------- 5a.
+
+SELECT * FROM Customer
+ORDER BY NAME;
+
+-------------------------------- 5b.
+
+SELECT * FROM Product
+ORDER BY Price DESC;
+
+-------------------------------- 5c.
+
+SELECT * FROM Product
+WHERE ProductID IN (
+	SELECT ProductID
+	FROM OrderDetails
+	WHERE OrderID IN (
+		SELECT OrderID
+		FROM ORDERS
+		WHERE CustomerID = 3
+	)
+);
+
+-------------------------------- 6a.
+
+SELECT DISTINCT COUNT(CustomerID) FROM Orders;
+
+-------------------------------- 6b.
+
+SELECT DISTINCT COUNT(ProductID) FROM Product;
+
+-------------------------------- 6c.
+
+SELECT OrderID, SUM(Price) AS TotalOrderPrice
+FROM OrderDetails
+GROUP BY OrderID;
