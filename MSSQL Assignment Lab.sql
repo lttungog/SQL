@@ -140,5 +140,22 @@ SELECT Employee.EmployeeID, Employee.Name, Employee.Tel, Employee.Email, GroupDe
 FROM Employee
 FULL JOIN GroupDetail
 ON Employee.EmployeeID = GroupDetail.EmployeeID;
+WHERE GroupDetail.GroupID = NULL;
 
-SELECT * FROM Employee
+------------------------------- 3g
+
+SELECT Employee.EmployeeID, Employee.Name, Employee.Tel, Employee.Email, GroupDetail.GroupID, GroupDetail.Status
+FROM Employee
+JOIN GroupDetail
+ON Employee.EmployeeID = GroupDetail.EmployeeID
+WHERE Status = 'Done';
+
+------------------------------- 4a
+
+ALTER TABLE Employee
+ALTER COLUMN Name varchar(100) NOT NULL;
+
+------------------------------- 4b
+
+ALTER TABLE Project
+ADD CHECK (COST > 1000);
